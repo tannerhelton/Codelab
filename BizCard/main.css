@@ -1,0 +1,137 @@
+body,
+html {
+    background-color: #f6f6f6;
+}
+
+#painting {
+    width: 50vh;
+    height: 50vh;
+    margin-top: 3.75vh;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 1.25vh 1.25vh 1.25vh #8d8d8d;
+}
+
+#bizcard {
+    background-size: contain;
+    background-image: url("bg.jpg");
+    background-origin: middle;
+    background-repeat: no-repeat;
+    width: 350px;
+    height: 200px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#toprow {
+    height: 36.25vh;
+}
+
+#bottomleftrow {
+    height: 12.5vh;
+    width: 13.75vh;
+}
+
+#bottommiddle {
+    height: 12.5vh;
+    width: 2.5vh;
+}
+
+.midbox {
+    height: 12.5vh;
+    width: 32.5vh;
+}
+
+#bottomrow {
+    height: 12.5vh;
+    width: 50vh;
+}
+
+#bigbox {
+    width: 36.25vh;
+    height: 36.25vh;
+}
+
+#tinybox {
+    width: 2.5vh;
+    height: 5.625vh;
+}
+
+#bottomleftbox {
+    width: 12.5vh;
+    height: 12.5vh;
+}
+
+#bottomrightbox {
+    width: 1.25vh;
+    height: 1.25vh;
+}
+
+#divider1 {
+    height: 36.25vh;
+    width: 1.25vh;
+}
+
+#divider2 {
+    height: 1.25vh;
+    width: 12.5vh;
+}
+
+.mediumbox {
+    width: 12.5vh;
+    height: 17.5vh;
+}
+
+.smallrightbox {
+    width: 2.5vh;
+    height: 5.625vh;
+}
+
+#middledivider {
+    width: 50vh;
+    height: 1.25vh;
+}
+
+#rightdivider {
+    width: 1.25vh;
+    height: 12.5vh;
+}
+
+#hdiv {
+    width: 2.5vh;
+    height: 1.25vh;
+}
+
+#centerdivider {
+    width: 2.5vh;
+    height: 1.25vh;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.black {
+    background-color: black;
+}
+
+.right {
+    float: right;
+}
+
+.white {
+    color: #FDFDFD;
+}
+
+.left {
+    float: left;
+}
