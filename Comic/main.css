@@ -67,7 +67,7 @@ h2 {
     height: 280px;
     width: 200px;
     margin-top: 10px;
-    border: 10px solid purple;
+    border: 10px solid lightblue;
     float: left;
     background-color: #00d26d;
     overflow: hidden;
@@ -78,7 +78,7 @@ h2 {
     height: 280px;
     width: 1000px;
     margin-top: 10px;
-    border: 10px solid purple;
+    border: 10px solid orange;
     float: right;
     background-color: #ffc100;
     overflow: hidden;
@@ -191,7 +191,31 @@ h2 {
 
 #image2 {
     position: absolute;
+    width: 100%;
+    top: -60px;
+}
+
+#image3 {
+    position: absolute;
     height: 100%;
+    right: -50px;
+}
+
+#image4 {
+    position: absolute;
+    width: 100%;
+    bottom: -350px;
+}
+
+#image5 {
+    position: absolute;
+    width: 100%;
+}
+
+#image7 {
+    position: absolute;
+    width: 100%;
+    top: -40px;
 }
 
 
