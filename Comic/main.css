@@ -212,10 +212,20 @@ h2 {
     width: 100%;
 }
 
+#image6 {
+    position: absolute;
+    width: 100%;
+}
+
 #image7 {
     position: absolute;
     width: 100%;
     top: -40px;
+}
+
+#image8 {
+    position: absolute;
+    height: 100%;
 }
 
 
