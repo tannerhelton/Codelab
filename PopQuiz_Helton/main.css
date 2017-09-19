@@ -1,0 +1,44 @@
+#box {
+    width: 500px;
+    border: solid lightgray 1px;
+    padding: 15px;
+    margin: 10% auto auto auto;
+}
+
+html,
+body {
+    font-family: sans-serif;
+}
+
+.tag {
+    padding: 4px;
+    background-color: aliceblue;
+    color: cadetblue;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.red {
+    color: orangered;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#company {
+    margin-bottom: 5px;
+}
+
+#location {
+    color: dimgray;
+    margin-bottom: 5px;
+}
+
+h1 {
+    color: #2389FE;
+}
+
+#company-location {
+    font-size: 18px;
+}
