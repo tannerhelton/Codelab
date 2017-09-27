@@ -39,10 +39,13 @@ body {
     border-radius: 100%;
     padding: 20px;
     position: absolute;
-    top: 10;
-    bottom: 10;
-    right: 0;
+    margin-left: auto;
+    margin-right: 10px;
+    margin-top: 10px;
+    top: 0;
     left: 0;
+    bottom: 0;
+    right: 0;
     height: 50px;
     width: 50px;
 }
@@ -99,11 +102,36 @@ body {
     background-color: aquamarine;
 }
 
+.light:hover {
+    border: 20px solid lightblue;
+}
+
+.dark:hover {
+    border: 20px solid darkblue;
+}
+
 .dark {
     border: 10px solid darkblue;
     background-color: dodgerblue;
 }
 
+.light2 {
+    border: 10px solid #183940;
+    background-color: #ffff99;
+}
+
+.light2:hover {
+    border: 20px solid #183940;
+}
+
+.dark2:hover {
+    border: 20px solid #931843;
+}
+
+.dark2 {
+    border: 10px solid #931843;
+    background-color: #238414;
+}
 
 .sun:hover {
     border: 20px solid #f1c40f;

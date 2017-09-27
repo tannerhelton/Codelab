@@ -24,10 +24,10 @@ $(document).ready(function () {
             $('#planet1').removeClass('dark').addClass('light');
         }
 
-        if ($('#planet2').hasClass('light')) {
-            $('#planet2').removeClass('light').addClass('dark');
+        if ($('#planet2').hasClass('light2')) {
+            $('#planet2').removeClass('light2').addClass('dark2');
         } else {
-            $('#planet2').removeClass('dark').addClass('light');
+            $('#planet2').removeClass('dark2').addClass('light2');
         }
     });
 });
