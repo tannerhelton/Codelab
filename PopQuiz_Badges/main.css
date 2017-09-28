@@ -1,0 +1,100 @@
+body,
+html {
+    color: #505050;
+    font-family: sans-serif;
+}
+
+.white {
+    color: white;
+}
+
+#box {
+    width: 600px;
+    border: 2.5px solid gray;
+    margin-left: auto;
+    padding: 10px;
+    margin-right: auto;
+}
+
+.inline {
+    display: inline-block;
+}
+
+#badges {
+    padding-top: 10px;
+    width: 100%;
+}
+
+.right {
+    float: right;
+}
+
+.badge {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 32%;
+    text-align: center;
+    display: inline-block;
+    margin: auto;
+}
+
+.badge2 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    margin: auto;
+}
+
+.badge3 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    margin: auto;
+}
+
+.red {
+    border: 1px solid red;
+    border-radius: 5px;
+    background-color: lightcoral;
+}
+
+.yellow {
+    border: 1px solid yellow;
+    border-radius: 5px;
+    background-color: lightyellow;
+}
+
+.purple {
+    border: 1px solid purple;
+    border-radius: 5px;
+    background-color: mediumpurple;
+}
+
+#below {
+    padding-top: 75px;
+}
+
+#newest {
+    margin-right: 0px;
+    display: inline-block;
+}
+
+#next {
+    width: 300px;
+    display: inline-block;
+}
+
+.img {
+    float: left;
+    padding: 5px;
+}
+
+.pop {
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: black;
+}
