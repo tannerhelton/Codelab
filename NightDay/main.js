@@ -24,6 +24,12 @@ $(document).ready(function () {
             $('#planet1').removeClass('dark').addClass('light');
         }
 
+        if ($('#planet1').hasClass('right')) {
+            $('#planet1').removeClass('right').addClass('left');
+        } else {
+            $('#planet1').removeClass('left').addClass('right');
+        }
+
         if ($('#planet2').hasClass('light2')) {
             $('#planet2').removeClass('light2').addClass('dark2');
         } else {
