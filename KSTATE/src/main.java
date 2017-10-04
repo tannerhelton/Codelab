@@ -1,13 +1,15 @@
-float width = 20;
-float height = 10;
-float a = 0;
-float area1 = 0;
+import java.util.Scanner;
 
-if (width < height) {
-area1 = (height/2) * (height/2) * 3.14159;
-        a = area1 * 2;
-    } else {
-        area1 = (height / 2) * (height / 2) * 3.14159;
-        a = area1 * 2;
-    }
-    println(a/(width*height));
+public class main {
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter Width");
+		Double width = s.nextDouble();
+		System.out.println("Enter Length");
+		Double length = s.nextDouble();
+		Double area = width * length;
+		System.out.println(area);
+		
+		
+	}
+}
