@@ -1,3 +1,5 @@
+// --- Tanner Helton 2017 ---
+
 var readlineSync = require('readline-sync');
 var readInt = readlineSync.questionInt;
 var readFloat = readlineSync.questionFloat;
