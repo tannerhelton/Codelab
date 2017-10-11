@@ -25,8 +25,11 @@ body {
 #planet1 {
     border-radius: 100%;
     padding: 20px;
-    margin: 100px;
     position: absolute;
+    margin-top: 50px;
+    margin-bottom: auto;
+    margin-left: 50px;
+    margin-right: auto;
     top: 0;
     left: 0;
     bottom: 0;
@@ -42,12 +45,28 @@ body {
     margin-left: auto;
     margin-right: 10px;
     margin-top: 10px;
-    top: 0;
-    left: 0;
     bottom: 0;
+    left: 0;
+    top: 0;
     right: 0;
     height: 50px;
     width: 50px;
+}
+
+#planet3 {
+    border-radius: 100%;
+    padding: 10px;
+    position: absolute;
+    margin-left: 10px;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: 10px;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 20px;
+    width: 20px;
 }
 
 .visible {
@@ -78,6 +97,30 @@ body {
     margin: 20px;
 }
 
+#moonspot11 {
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    float: right;
+    margin: 20px;
+}
+
+#moonspot21 {
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    float: left;
+    margin: 20px;
+}
+
+#moonspot31 {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    float: left;
+    margin: 20px;
+}
+
 #sky {
     height: 100%;
     width: 100%;
@@ -98,40 +141,59 @@ body {
 }
 
 .light {
-    border: 10px solid lightblue;
-    background-color: aquamarine;
+    border: 10px solid #b71c1c;
+    background-color: #ff4444;
 }
 
 .light:hover {
-    border: 20px solid lightblue;
+    border: 20px solid #b71c1c;
 }
 
 .dark:hover {
-    border: 20px solid darkblue;
+    border: 20px solid #ef5350;
 }
 
 .dark {
-    border: 10px solid darkblue;
-    background-color: dodgerblue;
+    border: 10px solid #ef5350;
+    background-color: #CC0000;
 }
 
 .light2 {
-    border: 10px solid #183940;
-    background-color: #ffff99;
+    border: 10px solid #2962ff;
+    background-color: #4285F4;
 }
 
 .light2:hover {
-    border: 20px solid #183940;
+    border: 20px solid #2962ff;
 }
 
 .dark2:hover {
-    border: 20px solid #931843;
+    border: 20px solid #311b92;
 }
 
 .dark2 {
-    border: 10px solid #931843;
-    background-color: #238414;
+    border: 10px solid #311b92;
+    background-color: #b388ff;
 }
+
+.light3 {
+    border: 10px solid #00796b;
+    background-color: #4db6ac;
+}
+
+.light3:hover {
+    border: 20px solid #00796b;
+}
+
+.dark3:hover {
+    border: 20px solid #1de9b6;
+}
+
+.dark3 {
+    border: 10px solid #1de9b6;
+    background-color: #004d40;
+}
+
 
 .sun:hover {
     border: 20px solid #f1c40f;

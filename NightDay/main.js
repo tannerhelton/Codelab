@@ -35,5 +35,11 @@ $(document).ready(function () {
         } else {
             $('#planet2').removeClass('dark2').addClass('light2');
         }
+
+        if ($('#planet3').hasClass('light3')) {
+            $('#planet3').removeClass('light3').addClass('dark3');
+        } else {
+            $('#planet3').removeClass('dark3').addClass('light3');
+        }
     });
 });
