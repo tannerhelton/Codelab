@@ -38,6 +38,22 @@ body {
     width: 150px;
 }
 
+#planet4 {
+    border-radius: 100%;
+    padding: 20px;
+    position: absolute;
+    margin-top: 250px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: 20px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 150px;
+    width: 150px;
+}
+
 #planet2 {
     border-radius: 100%;
     padding: 20px;
@@ -53,7 +69,39 @@ body {
     width: 50px;
 }
 
+#planet5 {
+    border-radius: 100%;
+    padding: 20px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: 100px;
+    margin-bottom: 20px;
+    margin-top: auto;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 50px;
+    width: 50px;
+}
+
 #planet3 {
+    border-radius: 100%;
+    padding: 10px;
+    position: absolute;
+    margin-left: 10px;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: auto;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 20px;
+    width: 20px;
+}
+
+#planet6 {
     border-radius: 100%;
     padding: 10px;
     position: absolute;
@@ -70,7 +118,11 @@ body {
 }
 
 .visible {
-    background-color: #eaeff2;
+    visibility: visible;
+}
+
+.notvisible {
+    visibility: hidden;
 }
 
 #moonspot1 {
@@ -78,6 +130,7 @@ body {
     width: 40px;
     border-radius: 100%;
     float: right;
+    background-color: #eaeff2;
     margin: 20px;
 }
 
@@ -87,11 +140,13 @@ body {
     border-radius: 100%;
     float: right;
     margin: 20px;
+    background-color: #eaeff2;
 }
 
 #moonspot3 {
     height: 180px;
     width: 180px;
+    background-color: #eaeff2;
     border-radius: 100%;
     float: right;
     margin: 20px;
@@ -99,6 +154,7 @@ body {
 
 #moonspot11 {
     height: 10px;
+    background-color: red;
     width: 10px;
     border-radius: 100%;
     float: right;
@@ -107,6 +163,7 @@ body {
 
 #moonspot21 {
     height: 20px;
+    background-color: red;
     width: 20px;
     border-radius: 100%;
     float: left;
@@ -117,6 +174,7 @@ body {
     height: 40px;
     width: 40px;
     border-radius: 100%;
+    background-color: red;
     float: left;
     margin: 20px;
 }
