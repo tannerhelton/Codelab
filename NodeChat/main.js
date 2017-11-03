@@ -8,12 +8,18 @@ $(document).ready(function () {
 
     $('#user-save').click(function () {
         console.log('click');
+        if () {
+            io.on('connection', function (socket) {
+                socket.join('room1');
+            });
+        }
         var username = $('#user-name');
         var txt = username.val().trim();
         console.log(txt);
         if (txt.length > 0) {
             name = txt;
             username.prop('disabled', true);
+            $('#group').prop('disabled', true);
             $(this).hide();
             $('#controls').show();
             $('#message').prop('disabled', false);
