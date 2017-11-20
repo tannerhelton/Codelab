@@ -1,76 +1,44 @@
 function setup() {
-    createCanvas(640, 480);
+    createCanvas(1000, 500, WEBGL);
+    rectMode(CENTER);
 }
 
 function draw() {
-    background('#FFFAED');
+    background(255);
     var x = mouseX;
     var y = mouseY;
 
-    /*
-    //Face
-    noStroke();
-    fill('#52C5DC');
-    ellipse(x, y, 200, 200);
 
-    //Nose
-    fill('#EFB8D2');
-    ellipse(x, y + 30, 64, 64);
-
-    //Left Eye and pupil
-    eye('#FFFFFF', 42, -26, '#7FC35E');
-
-    //Right Eye and pupil
-    eye('#FFFFFF', -42, -26, '#7FC35E');
-
-    //Left Ear
-    ear('#52C5DC', -100, -80, -1);
-
-    //Left Ear
-    ear('#52C5DC', 100, -80, 1);
-
-    //Tounge
-    fill('#EE3E36');
-    arc(x - 20, y + 80, 40, 70, 0, PI + QUARTER_PI, CHORD);
-*/
-    //Face
-    noStroke();
-    fill('white');
-    ellipse(x, y, 200, 200);
-
-    //Nose
-    fill('black');
-    ellipse(x, y + 30, 64, 64);
-
-    //Left Eye and pupil
-    eye('black', 42, -26, 'white');
-
-    //Right Eye and pupil
-    eye('white', -42, -26, 'black');
-
-    //Left Ear
-    ear('black', -30, -100, -1);
-
-    //Right Ear
-    ear('white', 30, -100, 1);
-
-    //Tounge
-    fill('black');
-    arc(x - 20, y + 80, 40, 70, 0, PI + QUARTER_PI, CHORD);
-}
-
-function eye(cL, xL, yL, pL) {
-    fill(cL);
-    ellipse(mouseX + xL, mouseY + yL, 64, 64);
-    fill(pL);
-    ellipse(mouseX + xL, mouseY + yL, 40, 40);
-}
-
-function ear(cL, xL, yL, sL) {
-    fill(cL);
     push();
-    translate(mouseX + xL, mouseY + yL);
-    rotate(sL * Math.PI / 4);
-    ellipse(0, 0, 52, 92);
+    translate(x - width / 2, y - height / 2);
+    noStroke();
+    fill('pink');
+    rect(0, 0, 50, 150);
+    fill('lightblue');
+    ellipse(0, -75, 65, 70);
+    fill("white");
+    ellipse(-10, -90, 15, 15);
+    ellipse(10, -90, 15, 15);
+    fill("black");
+    ellipse(-10, -92, 5, 5);
+    ellipse(10, -87, 5, 5);
+    fill('red');
+    ellipse(0, -75, 9, 9);
+    fill('purple');
+    triangle(-25, 75, -10, 75, -35, 110);
+    triangle(25, 75, 10, 75, 35, 110);
+    pop();
+
+    noStroke();
+    donut(x, y);
+}
+
+function donut(xL, yL) {
+    push();
+    fill('black');
+    translate(xL - width / 2, yL - height / 2);
+    rotateX(frameCount * 0.01);
+    rotateY(frameCount * 0.01);
+    torus(150, 10);
     pop();
 }
