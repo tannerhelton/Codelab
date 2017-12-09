@@ -17,14 +17,13 @@ var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function (socket) {
 
-    var mes = {
-        text: '<p>Hello</p>'
-    };
     var clientIp = socket.request.connection.remoteAddress;
 
     console.log('socket connected from ' + clientIp);
 
-    socket.emit('welcome', mes);
+    socket.emit('welcome', {
+        text: 'Welcome to Agario'
+    });
 
     socket.on('user', function (name) {
         console.log(name + ' connected');
@@ -32,6 +31,16 @@ io.sockets.on('connection', function (socket) {
         socket.user = name;
         console.log('users : ' + users.length);
         socket.broadcast.emit('otherUserConnect', name);
+    });
+
+    socket.on('size', function (name) {
+        users.push(name);
+        socket.user = name;
+        console.log('users : ' + users.length);
+        socket.broadcast.emit('otherUserConnect', name);
+        io.sockets.emit('size', {
+            size: 2 * name
+        })
     });
 
     socket.on('disconnect', function () {
