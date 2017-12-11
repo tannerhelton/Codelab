@@ -1,3 +1,4 @@
+var mainUser = '';
 $(document).ready(function () {
     var socketServer = 'http://localhost:3000/';
     var socket = io.connect(socketServer);
@@ -36,6 +37,11 @@ $(document).ready(function () {
         printOut(data.user + ': ' + data.message);
     })
 
+    socket.on('connectUser', function (data) {
+        console.log(data.text);
+        mainUser = data.text;
+    })
+
     $('#user-save').click(function () {
         var username = $('#user-name');
         var txt = username.val().trim();
@@ -62,13 +68,13 @@ $(document).ready(function () {
         }
     });
 
-    $('#send').click(function () {
-        var input = $('#message');
-        var text = input.val().trim();
-        if (text.length > 0) {
-            socket.emit('message', text);
-        }
-        input.val('');
+    $('#restart').click(function () {
+        location.reload();
+    });
+
+    socket.emit('data', {
+        x: mouseX,
+        y: mouseY
     });
 
 });
@@ -81,22 +87,18 @@ function setup() {
     createCanvas($(window).width() - 50, $(window).height() / 1.5);
     rectMode(CENTER);
 }
-var size = 1;
 
 function draw() {
     background(200);
     var x = mouseX;
     var y = mouseY;
 
-    if (mouseIsPressed) {
-        size *= 2;
-        socket.emit('size', size);
-    }
-
     push();
     translate(x, y);
     noStroke();
     fill('black');
-    ellipse(0, 0, 15 * size, 15 * size);
+    textSize(32);
+    text(mainUser, 0, -25);
+    ellipse(0, 0, 15, 15);
     pop();
 }

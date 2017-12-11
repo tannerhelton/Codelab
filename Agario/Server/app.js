@@ -15,8 +15,14 @@ var users = [];
 
 var io = require('socket.io').listen(server);
 
+var currentConnections = {};
 io.sockets.on('connection', function (socket) {
-
+    currentConnections[client.id] = {
+        socket: socket
+    };
+    client.on('data', function (somedata) {
+        currentConnections[socket.id].data = someData;
+    });
     var clientIp = socket.request.connection.remoteAddress;
 
     console.log('socket connected from ' + clientIp);
@@ -31,6 +37,10 @@ io.sockets.on('connection', function (socket) {
         socket.user = name;
         console.log('users : ' + users.length);
         socket.broadcast.emit('otherUserConnect', name);
+        socket.emit('connectUser', {
+            text: name
+        });
+
     });
 
     socket.on('size', function (name) {
@@ -52,6 +62,7 @@ io.sockets.on('connection', function (socket) {
             users.splice(users.indexOf(socket.user), 1);
             socket.broadcast.emit('otherUserDisconnect', socket.user);
         }
+        delete currentConnections[socket.id];
     });
 
     socket.on('message', function (data) {
@@ -61,4 +72,5 @@ io.sockets.on('connection', function (socket) {
             message: data
         });
     });
+
 });
