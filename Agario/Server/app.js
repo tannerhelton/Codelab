@@ -8,7 +8,7 @@ app.use('/', express.static(webroot));
 
 var server = http.listen(3000, function () {
     console.log('hosting from ' + webroot);
-    console.log('server listening on http://localhost/');
+    console.log('server listening on http://localhost:3000/');
 });
 
 var users = [];
@@ -17,11 +17,18 @@ var io = require('socket.io').listen(server);
 
 var currentConnections = {};
 io.sockets.on('connection', function (socket) {
-    currentConnections[client.id] = {
+    currentConnections[socket.id] = {
         socket: socket
     };
-    client.on('data', function (somedata) {
-        currentConnections[socket.id].data = someData;
+    socket.on('data', function (someData) {
+        currentConnections[socket.id].x = someData.x;
+        currentConnections[socket.id].y = someData.y;
+        currentConnections[socket.id].name = someData.name;
+        socket.emit('update', {
+            x: currentConnections[socket.id].x,
+            y: currentConnections[socket.id].y,
+            name: currentConnections[socket.id].name
+        });
     });
     var clientIp = socket.request.connection.remoteAddress;
 
@@ -48,9 +55,6 @@ io.sockets.on('connection', function (socket) {
         socket.user = name;
         console.log('users : ' + users.length);
         socket.broadcast.emit('otherUserConnect', name);
-        io.sockets.emit('size', {
-            size: 2 * name
-        })
     });
 
     socket.on('disconnect', function () {
@@ -64,13 +68,4 @@ io.sockets.on('connection', function (socket) {
         }
         delete currentConnections[socket.id];
     });
-
-    socket.on('message', function (data) {
-        console.log(socket.user + ': ' + data);
-        io.sockets.emit('message', {
-            user: socket.user,
-            message: data
-        });
-    });
-
 });
