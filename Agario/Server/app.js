@@ -29,6 +29,11 @@ io.sockets.on('connection', function (socket) {
             y: currentConnections[socket.id].y,
             name: currentConnections[socket.id].name
         });
+        console.log({
+            x: currentConnections[socket.id].x,
+            y: currentConnections[socket.id].y,
+            name: currentConnections[socket.id].name
+        });
     });
     var clientIp = socket.request.connection.remoteAddress;
 
