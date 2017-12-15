@@ -1,15 +1,11 @@
 var mainUser = '';
 var users = [];
-var socketServer = 'http://localhost:3000/';
+var socketServer = 'http://10.10.101.132:3000/';
 var socket = io.connect(socketServer);
 var user;
 
 
-var x = 0;
-var y = 0;
-
 function setup() {
-
     socket.on('connect', function () {
         $('#error').hide();
         $('#error').html('');
@@ -22,20 +18,25 @@ function setup() {
         $('#noerror').hide();
     });
 
+    socket.on('start', function (data) {
+        users = data;
+    });
+
     socket.on('welcome', function (data) {
         printOut(data.text);
     });
 
     socket.on('otherUserConnect', function (data) {
         printOut(data + ' connected');
+        users.push(data);
     });
-
     socket.on('otherUserDisconnect', function (data) {
-        printOut(data);
-    });
-
-    socket.on('connectUser', function (data) {
-        mainUser = data.text;
+        printOut(data.name);
+        for (var i = users.length - 1; i >= 0; --i) {
+            if (users[i].id == data.id) {
+                users.splice(i, 1);
+            }
+        }
     });
 
     $('#user-save').click(function () {
@@ -49,10 +50,8 @@ function setup() {
             $('#message').prop('disabled', false);
             $('#restart').prop('disabled', false);
             user = name;
-            socket.emit('user', user);
-            users.push({
-                x: 0,
-                y: 0,
+            mainUser = user;
+            socket.emit('user', {
                 name: user
             });
         }
@@ -68,42 +67,33 @@ function setup() {
     }
 
     socket.on('update', function (stuff) {
-        var p = 0;
         for (var i = 0; i < users.length; i++) {
-            if (users[i].name == stuff.name) {
+            if (users[i].id == stuff.id) {
                 users[i].x = stuff.x;
+                users[i].name = stuff.name;
                 users[i].y = stuff.y;
-            } else {
-                if (p >= users.length) {
-                    users.push({
-                        x: stuff.x,
-                        y: stuff.y,
-                        name: stuff.name
-                    });
-                } else {
-                    p += 1;
-                }
             }
         }
     });
-    createCanvas($(window).width() - 50, $(window).height() / 1.5);
+
+    createCanvas(800, 600);
 }
 
 function draw() {
+
     background(200);
-    x = mouseX;
-    y = mouseY;
     socket.emit('data', {
         x: mouseX,
-        y: mouseY,
-        name: mainUser
+        y: mouseY
     });
     noStroke();
     fill('black');
     textSize(32);
+    ellipse(mouseX, mouseY, 15, 15);
+
     if (users.length >= 1) {
         for (var i = 0; i < users.length; i++) {
-            text(users[i].name, users[i].x, users[i].y - 25);
+            //text(users[i].name, users[i].x, users[i].y - 25);
             ellipse(users[i].x, users[i].y, 15, 15);
         }
     }

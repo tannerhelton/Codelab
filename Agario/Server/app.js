@@ -12,6 +12,7 @@ var server = http.listen(3000, function () {
 });
 
 var users = [];
+var usr = [];
 
 var io = require('socket.io').listen(server);
 
@@ -25,11 +26,6 @@ io.sockets.on('connection', function (socket) {
         currentConnections[socket.id].y = someData.y;
         currentConnections[socket.id].name = someData.name;
         socket.emit('update', {
-            x: currentConnections[socket.id].x,
-            y: currentConnections[socket.id].y,
-            name: currentConnections[socket.id].name
-        });
-        console.log({
             x: currentConnections[socket.id].x,
             y: currentConnections[socket.id].y,
             name: currentConnections[socket.id].name
