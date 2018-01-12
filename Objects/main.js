@@ -1,11 +1,11 @@
 var bg;
+DraggableCircle.lock = false;
 var c1 = new DraggableCircle(50, 50, 50);
 var c2 = new DraggableCircle(200, 50, 50);
 
 function setup() {
     createCanvas(800, 600);
     bg = color(200);
-    DraggableCircle.numObs = 0;
 }
 
 function draw() {
@@ -15,52 +15,46 @@ function draw() {
 }
 
 // A class called DraggableCircle
-function DraggableCircle(x, y, r) {
+function DraggableCircle(x, y, r, rc, ac) {
     //Explicit reference to self
     var self = this;
-
-    DraggableCircle.numObs++;
 
     //Public on the class
     self.x = x;
     self.y = y;
     self.r = r;
+    self.col1 = {
+        r: Math.floor(Math.random() * 255),
+        g: Math.floor(Math.random() * 255),
+        b: Math.floor(Math.random() * 255)
+    };
+    self.col2 = {
+        r: Math.floor(Math.random() * 255),
+        g: Math.floor(Math.random() * 255),
+        b: Math.floor(Math.random() * 255)
+    };
 
     // Private stuff
-    var dragging = false;
+    self.dragging = false;
 
     self.display = function () {
 
         // We need to drag when mouse is down
-        //if (DraggableCircle == 1) {
         if (mouseIsPressed) {
-            if (Math.pow(Math.pow((self.x - mouseX), 2) + Math.pow((self.y - mouseY), 2), 1 / 2) <= self.r) {
-                fill(0, 0, 255);
-                dragging = true;
+            if (Math.pow(Math.pow((self.x - mouseX), 2) + Math.pow((self.y - mouseY), 2), 1 / 2) <= self.r && DraggableCircle.lock == false) {
+                fill(self.col1.r, self.col1.g, self.col1.b);
+                self.dragging = true;
+                DraggableCircle.lock = true;
             }
-
-            if (dragging) {
+            if (self.dragging) {
                 self.x = mouseX;
                 self.y = mouseY;
             }
         } else {
-            fill(0, 255, 0);
-            dragging = false;
+            DraggableCircle.lock = false;
+            fill(self.col2.r, self.col2.g, self.col2.b);
+            self.dragging = false;
         }
-        /*} else {
-            if (Math.pow(Math.pow((self.x - mouseX), 2) + Math.pow((self.y - mouseY), 2), 1 / 2) <= self.r && mouseIsPressed) {
-                fill(0, 0, 255);
-                dragging = true;
-            } else {
-                fill(0, 255, 0);
-                dragging = false;
-            }
-
-            if (dragging) {
-                self.x = mouseX;
-                self.y = mouseY;
-            }
-        }*/
         ellipse(self.x, self.y, self.r, self.r);
     }
 }

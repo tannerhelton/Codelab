@@ -42,7 +42,7 @@ io.sockets.on('connection', function (socket) {
     var clientIp = socket.request.connection.remoteAddress;
     //Logs the user's IP
     console.log('socket connected from ' + clientIp);
-
+	
     //Called when a new user is made from a browser
     socket.on('user', function (data) {
         console.log(data.name + ' connected');
@@ -53,6 +53,7 @@ io.sockets.on('connection', function (socket) {
         data.id = socket.id;
         //Adds user to the array of users
         users.push(data);
+		socket.user = data.name;
 
         console.log('users : ' + users.length);
         //Copies over the existing array of users to the client's computer
@@ -74,5 +75,14 @@ io.sockets.on('connection', function (socket) {
                 name: socket.user
             });
         }
+    });
+	
+	//Recieves the message and relays it back to the users
+	socket.on('message', function (data) {
+        console.log(socket.user + ': ' + data);
+        io.sockets.emit('message', {
+            user: socket.user,
+            message: data
+        });
     });
 });
