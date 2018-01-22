@@ -15,9 +15,10 @@ function draw() {
 }
 
 // A class called DraggableCircle
-function DraggableCircle(x, y, r, rc, ac) {
+function DraggableCircle(x, y, r) {
     //Explicit reference to self
     var self = this;
+    var c;
 
     //Public on the class
     self.x = x;
@@ -42,7 +43,7 @@ function DraggableCircle(x, y, r, rc, ac) {
         // We need to drag when mouse is down
         if (mouseIsPressed) {
             if (Math.pow(Math.pow((self.x - mouseX), 2) + Math.pow((self.y - mouseY), 2), 1 / 2) <= self.r && DraggableCircle.lock == false) {
-                fill(self.col1.r, self.col1.g, self.col1.b);
+                c = color(self.col1.r, self.col1.g, self.col1.b);
                 self.dragging = true;
                 DraggableCircle.lock = true;
             }
@@ -52,9 +53,10 @@ function DraggableCircle(x, y, r, rc, ac) {
             }
         } else {
             DraggableCircle.lock = false;
-            fill(self.col2.r, self.col2.g, self.col2.b);
+            c = color(self.col2.r, self.col2.g, self.col2.b);
             self.dragging = false;
         }
+        fill(c);
         ellipse(self.x, self.y, self.r, self.r);
     }
 }
