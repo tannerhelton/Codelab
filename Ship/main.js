@@ -1,47 +1,50 @@
+var docWidth = $(document).width();
+var docHeight = $(document).height();
 var bg;
 DraggableCircle.lock = false;
 var c1 = new DraggableCircle(50, 50, 50);
 var c2 = new DraggableCircle(200, 50, 50);
-var ship1 = new Ship(200, 200);
+var ship1 = new Ship(docWidth / 2, docHeight - 60);
 var shots = [];
+Ship.canFire = true;
+var t = 0;
 
 function setup() {
-    createCanvas(800, 600);
-    bg = color(200);
+    rectMode(CENTER);
+    createCanvas(docWidth - 40, docHeight - 40);
+    bg = color(255);
 }
 
 function draw() {
+    cursor(CROSS);
     background(bg);
     c1.display();
     c2.display();
     ship1.display();
 
+    if (t > 20) {
+        t = 0;
+        Ship.canFire = true;
+    }
     if (keyIsPressed) {
-        if (keyCode == LEFT_ARROW) {
+        if (keyIsDown(LEFT_ARROW)) {
             ship1.x -= 5;
-        } else if (keyCode == RIGHT_ARROW) {
+        } else if (keyIsDown(RIGHT_ARROW)) {
             ship1.x += 5;
         }
-        if (keyCode == 32) {
+        if (keyIsDown(32) && Ship.canFire) {
             shots.push(new Fire(ship1.x, ship1.y));
+            Ship.canFire = false;
         }
     }
     for (var i = 0; i < shots.length; i++) {
-        shots[i].display();
-    }
-}
-
-function Fire(x, y) {
-    var self = this;
-    self.x = x;
-    self.y = y;
-
-    self.display = function () {
-        if (self.y > 0) {
-            self.y -= 5;
-            ellipse(self.x, self.y, 5, 5);
+        if (shots[i].y < 0) {
+            shots.splice(i, 1);
+        } else {
+            shots[i].display();
         }
     }
+    t += 1;
 }
 
 function Ship(x, y) {
@@ -53,6 +56,17 @@ function Ship(x, y) {
     self.display = function () {
         rect(self.x, self.y, 30, 15);
     };
+}
+
+function Fire(x, y) {
+    var self = this;
+    self.x = x;
+    self.y = y;
+
+    self.display = function () {
+        self.y -= 5;
+        ellipse(self.x, self.y, 5, 5);
+    }
 }
 
 // A class called DraggableCircle
