@@ -5,6 +5,6 @@ function Opp(x, y) {
 
     self.display = function () {
         fill(0);
-        ellipse(self.x, self.y, 10, 10);
+        ellipse(self.x, self.y, 40, 40);
     }
 }

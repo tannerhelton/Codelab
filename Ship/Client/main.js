@@ -25,12 +25,11 @@ var enemies = [];
 var t = 0;
 
 function setup() {
-    createCanvas(docWidth - 40, docHeight - 40);
+    createCanvas(docWidth - 40, docHeight - 50);
     bg = color(255);
 }
 
 function draw() {
-    cursor(CROSS);
     background(bg);
     ship1.display();
     if (t > 10) {
@@ -38,7 +37,7 @@ function draw() {
         Ship.canFire = true;
     }
     if (start) {
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 9; i++) {
             enemies.push(new Opp((i + 1) * (width / 10), 30));
         }
         start = false;
@@ -47,7 +46,8 @@ function draw() {
         ship1.x -= 5;
     } else if (keyIsDown(RIGHT_ARROW) && ship1.x <= width - 25) {
         ship1.x += 5;
-    } else if (keyIsDown(UP_ARROW) && ship1.y <= 25) {
+    }
+    if (keyIsDown(UP_ARROW) && ship1.y <= 25) {
         ship1.y -= 5;
     } else if (keyIsDown(DOWN_ARROW) && ship1.y <= height - 25) {
         ship1.y += 5;
@@ -56,22 +56,24 @@ function draw() {
         shots.push(new Fire(ship1.x, ship1.y - 10));
         Ship.canFire = false;
     }
-    for (var x = 0; x < enemies.length; x++) {
-        for (var i = 0; i < shots.length; i++) {
-            if (shots[i]) {
-                shots[i].display();
-                if (shots[i].y < 0) {
-                    shots.splice(i, 1);
-                }
-            }
-            if (enemies[x] && shots[i]) {
-                if (Math.pow(Math.pow(shots[i].x - enemies[x].x, 2) + Math.pow(shots[i].y - enemies[x].y, 2), 1 / 2) < enemies[x].r) {
-                    enemies.splice(x, 1);
-                    shots.splice(i, 1);
-                }
+
+    for (var i = 0; i < shots.length; i++) {
+        if (shots[i]) {
+            shots[i].display();
+            if (shots[i].y < 0) {
+                shots.splice(i, 1);
             }
         }
-        enemies[x].display();
+    }
+    for (var x = 0; x < enemies.length; x++) {
+        if (enemies[x]) {
+            enemies[x].display();
+        }
+        for (var i = 0; i < shots.length; i++) {
+            if (enemies[x] && Math.pow(Math.pow(shots[i].x - enemies[x].x, 2) + Math.pow(shots[i].y - enemies[x].y, 2), 1 / 2) < 40) {
+                enemies.splice(x, 1);
+            }
+        }
     }
     t += 1;
 }
