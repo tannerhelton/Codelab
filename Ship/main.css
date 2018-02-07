@@ -2,3 +2,7 @@ canvas {
     border: solid black 2px;
     margin: auto;
 }
+
+body {
+    background-color: dimgray;
+}
