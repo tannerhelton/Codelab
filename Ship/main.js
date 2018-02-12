@@ -1,8 +1,9 @@
 var _bg;
 var player = new Ship($(document).width() / 2, $(document).height() - 90, 30);
-var shots = [];
+var spawner = new SpawnEnemy(0, 200);
+var _sprites = [];
+var sprite = new Sprite(width / 2, height / 2, 0);
 Ship.canFire = true;
-var enemies = [];
 var t = 0;
 
 function setup() {
@@ -12,34 +13,30 @@ function setup() {
 
 function draw() {
     background(_bg);
-    player.display();
-    player.move();
-    player.shoot();
+    sprite.control();
+    //    player.display();
+    //    player.move();
+    //    player.shoot();
+    //spawner.run();
 
-    //    if (start) {
-    //        for (var i = 0; i < 9; i++) {
-    //            enemies.push(new Opp((i + 1) * (width / 10), 30));
+    //    for (var i = 0; i < shots.length; i++) {
+    //        if (shots[i]) {
+    //            shots[i].display();
+    //            if (shots[i].y < 0) {
+    //                shots.splice(i, 1);
+    //            }
     //        }
-    //        start = false;
     //    }
-
-    for (var i = 0; i < shots.length; i++) {
-        if (shots[i]) {
-            shots[i].display();
-            if (shots[i].y < 0) {
-                shots.splice(i, 1);
-            }
-        }
-    }
-    for (var x = 0; x < enemies.length; x++) {
-        if (enemies[x]) {
-            enemies[x].display();
-        }
-        for (var i = 0; i < shots.length; i++) {
-            if (enemies[x] && Math.pow(Math.pow(shots[i].x - enemies[x].x, 2) + Math.pow(shots[i].y - enemies[x].y, 2), 1 / 2) < 40) {
-                enemies.splice(x, 1);
-            }
-        }
-    }
-    t += 1;
+    //    for (var x = 0; x < enemies.length; x++) {
+    //        if (enemies[x]) {
+    //            enemies[x].display();
+    //            enemies[x].move();
+    //        }
+    //        for (var i = 0; i < shots.length; i++) {
+    //            if (enemies[x] && Math.pow(Math.pow(shots[i].x - enemies[x].x, 2) + Math.pow(shots[i].y - enemies[x].y, 2), 1 / 2) < 40) {
+    //                enemies.splice(x, 1);
+    //            }
+    //        }
+    //    }
+    //t += 1;
 }

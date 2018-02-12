@@ -6,7 +6,7 @@ function Ship(x, y, r) {
     self.r = r;
 
     self.display = function () {
-        fill(0);
+        fill(230);
         ellipse(self.x, self.y, self.r, self.r);
     };
 
