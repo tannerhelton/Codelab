@@ -1,6 +1,6 @@
 function RainDropEnemy(x, y, team) {
     Sprite.call(this, x, y, team);
-    this.speed = 5;
+    this.speed = 2.5;
 }
 
 RainDropEnemy.prototype = Object.create(Sprite.prototype);

@@ -1,23 +1,29 @@
 var _bg;
 var player = new Ship($(document).width() / 2, $(document).height() - 90, 30);
-var spawner = new SpawnEnemy(0, 200);
+var spawner = new SpawnEnemy(0, 500);
 var _sprites = [];
-var sprite = new Sprite(width / 2, height / 2, 0);
-Ship.canFire = true;
-var t = 0;
 
 function setup() {
     createCanvas($(document).width() - 40, $(document).height() - 60);
     _bg = color(25, 25, 25);
+    _sprites.push(new RainDropEnemy(200, 50, 1))
 }
 
 function draw() {
     background(_bg);
-    sprite.control();
-    //    player.display();
-    //    player.move();
-    //    player.shoot();
-    //spawner.run();
+    player.display();
+    player.move();
+    player.shoot();
+    spawner.run();
+
+    for (var i = 0; i < _sprites.length; i++) {
+        _sprites[i].control();
+        for (var p = 0; p < _sprites.length; p++) {
+            if (_sprites[i] && _sprites[p]) {
+                checkCollision(_sprites[i], _sprites[p]);
+            }
+        }
+    }
 
     //    for (var i = 0; i < shots.length; i++) {
     //        if (shots[i]) {
@@ -39,4 +45,11 @@ function draw() {
     //        }
     //    }
     //t += 1;
+}
+
+function checkCollision(a, b) {
+    if (a.isColliding(b) && a.team !== b.team) {
+        a.handleCollision();
+        b.handleCollision();
+    }
 }

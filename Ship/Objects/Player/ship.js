@@ -24,13 +24,8 @@ function Ship(x, y, r) {
     }
 
     self.shoot = function () {
-        if (t > 10) {
-            t = 0;
-            Ship.canFire = true;
-        }
-        if (keyIsDown(32) && Ship.canFire) {
-            shots.push(new Fire(self.x, self.y - 10));
-            Ship.canFire = false;
+        if (keyIsDown(32)) {
+            _sprites.push(new Bullet(self.x, self.y - 10, 0));
         }
     }
 }

@@ -5,7 +5,7 @@ function Sprite(x, y, team) {
 }
 
 Sprite.prototype.handleCollision = function () {
-    var index = _sprite.indexOf(this);
+    var index = _sprites.indexOf(this);
     if (index != -1) {
         _sprites.splice(index, 1);
     }

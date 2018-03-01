@@ -1,17 +1,14 @@
-function Opp(x, y) {
-    var self = this;
-    self.x = x;
-    self.y = y;
+function Opp(x, y, team) {
+    Sprite.call(this, x, y, team);
+}
 
-    self.display = function () {
-        fill(200, 0, 0);
-        ellipse(self.x, self.y, 40, 40);
-    }
-    self.move = function () {
-        self.x += 5;
-        if (self.x > width) {
-            var index = enemies.indexOf(self);
-            enemies.splice(index, 1);
-        }
-    }
+Opp.prototype = Object.create(Sprite.prototype);
+Opp.prototype.constructor = Opp;
+Opp.prototype.r = 40;
+
+Opp.prototype.move = function () {}
+
+Opp.prototype.display = function () {
+    fill(200, 0, 0);
+    ellipse(this.x, this.y, this.r, this.r);
 }
