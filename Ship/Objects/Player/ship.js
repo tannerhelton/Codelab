@@ -24,8 +24,12 @@ function Ship(x, y, r) {
     }
 
     self.shoot = function () {
-        if (keyIsDown(32)) {
-            _sprites.push(new Bullet(self.x, self.y - 10, 0));
+        if (keyIsDown(32) && Ship.canFire == true) {
+            setTimeout(function () {
+                Ship.canFire = true;
+            }, 80);
+            _sprites.push(new Bullet(self.x, self.y - 10, 0))
+            Ship.canFire = false;
         }
     }
 }

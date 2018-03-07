@@ -1,7 +1,8 @@
 var _bg;
 var player = new Ship($(document).width() / 2, $(document).height() - 90, 30);
-var spawner = new SpawnEnemy(0, 500);
+var spawner = new SpawnEnemy(0, 30);
 var _sprites = [];
+Ship.canFire = true;
 
 function setup() {
     createCanvas($(document).width() - 40, $(document).height() - 60);

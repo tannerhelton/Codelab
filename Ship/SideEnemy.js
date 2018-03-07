@@ -13,7 +13,7 @@ SideEnemy.prototype.move = function () {
         this.y = random(0 + this.r, height - this.r);
         this.x = random(-250, -50);
     }
-    if (this.x % 2 == 0) {
+    if (this.x % 37 == 0) {
         _sprites.push(new Bullet(this.x, this.y, 1));
     }
 }
