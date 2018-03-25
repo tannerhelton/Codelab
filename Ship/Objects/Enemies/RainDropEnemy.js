@@ -14,7 +14,7 @@ RainDropEnemy.prototype.move = function () {
         this.y = random(-250, -50);
     }
     if (this.y % 37 == 0) {
-        _sprites.push(new Bullet(this.x, this.y, 1));
+        _sprites.push(new Bullet(this.x, this.y, 1, createVector(0, 12)));
     }
 }
 

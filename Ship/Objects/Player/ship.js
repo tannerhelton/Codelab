@@ -28,7 +28,7 @@ function Ship(x, y, r) {
             setTimeout(function () {
                 Ship.canFire = true;
             }, 80);
-            _sprites.push(new Bullet(self.x, self.y - 10, 0))
+            _sprites.push(new Bullet(self.x, self.y - 10, 0, createVector(0, -12)));
             Ship.canFire = false;
         }
     }
