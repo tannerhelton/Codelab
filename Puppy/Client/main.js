@@ -1,7 +1,14 @@
+var a = 0;
+var socket = io.connect();
+
 function setup() {
     createCanvas(1000, 500, WEBGL);
     rectMode(CENTER);
 }
+
+socket.on('update', function (data) {
+    a = parseInt(data.range);
+});
 
 function draw() {
     background(255);
@@ -24,6 +31,8 @@ function draw() {
     ellipse(10, -87, 5, 5);
     fill('red');
     ellipse(0, -75, 9, 9);
+    ellipse(0, -75 + a, 9, 9);
+    console.log(a);
     fill('purple');
     triangle(-25, 75, -10, 75, -35, 110);
     triangle(25, 75, 10, 75, 35, 110);
